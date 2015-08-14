@@ -32,7 +32,7 @@
         <!--cnpj class gumga.framework.domain.domains.GumgaCNPJ-->
         <label for="cnpj"  gumga-translate-tag="cliente.cnpj"></label>
         <div ng-class="{'form-group':ClienteForm.cnpj.$pristine,'form-group has-error': ClienteForm.cnpj.$invalid,'form-group has-success': ClienteForm.cnpj.$valid}">
-        <input id="cnpj" pattern-alias="00.000.000/0000-00" gumga-error type="text" name="cnpj"  ng-model="entity.cnpj.value" class="form-control" gumga-pattern="(\d{2})\.(\d{3}).(\d{3})/(\d{4})-(\d{2})" placeholder="00.000.000/0000-00" />
+        <input id="cnpj"  gumga-error type="text" name="cnpj"  ng-model="entity.cnpj.value" class="form-control" placeholder="00.000.000/0000-00" />
         </div>
         <!--url class gumga.framework.domain.domains.GumgaURL-->
         <label for="url"  gumga-translate-tag="cliente.url"></label>
