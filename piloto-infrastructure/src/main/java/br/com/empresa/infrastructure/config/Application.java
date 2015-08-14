@@ -43,14 +43,14 @@ public class Application {
         GumgaQueryParserProvider.defaultMap = GumgaQueryParserProvider.getMySqlLikeMap();
         HikariConfig config = new HikariConfig();
 
-        config.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
-        config.addDataSourceProperty("url", "jdbc:mysql://localhost:3306/piloto?zeroDateTimeBehavior=convertToNull");
-        config.addDataSourceProperty("user", "root");
-        config.addDataSourceProperty("password", "senha");
-//        config.setDataSourceClassName("org.h2.jdbcx.JdbcDataSource");
-//        config.addDataSourceProperty("url", "jdbc:h2:mem:test;MVCC=true");
-//        config.addDataSourceProperty("user", "sa");
-//        config.addDataSourceProperty("password", "sa");
+//        config.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
+//        config.addDataSourceProperty("url", "jdbc:mysql://localhost:3306/piloto?zeroDateTimeBehavior=convertToNull");
+//        config.addDataSourceProperty("user", "root");
+//        config.addDataSourceProperty("password", "senha");
+        config.setDataSourceClassName("org.h2.jdbcx.JdbcDataSource");
+        config.addDataSourceProperty("url", "jdbc:h2:mem:test;MVCC=true");
+        config.addDataSourceProperty("user", "sa");
+        config.addDataSourceProperty("password", "sa");
         config.setMaximumPoolSize(20);
 
         config.setIdleTimeout(30000L);

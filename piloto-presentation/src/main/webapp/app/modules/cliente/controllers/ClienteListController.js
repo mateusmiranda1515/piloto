@@ -4,6 +4,7 @@ define([], function () {
     function ClienteListController($scope, ClienteService,populateScope ) {
 
          populateScope($scope,ClienteService,'Cliente','base-list');
+         
      }
 
     return ClienteListController;
