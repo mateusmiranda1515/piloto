@@ -1,0 +1,39 @@
+<form name="Modal">
+<div class="modal-header">
+    <h3 class="modal-title" gumga-translate-tag=" itempedidoproduto.title"></h3>
+</div>
+<div class="modal-body" style="overflow: auto">
+        <!--produto class br.com.empresa.piloto.domain.model.Produto-->
+        <div class="full-width-without-padding">
+             <label for="produto"  gumga-translate-tag="itempedidoproduto.produto"></label>
+            <gumga-many-to-one             value="entity.produto"
+            search-method="produtoAsyncSearch('nome',param)"
+            field="nome"
+            authorize-add="true"            add-method="produtoAsyncSave(value,'nome')">
+            </gumga-many-to-one>
+        </div>
+        <!--quantidade class java.lang.Integer-->
+        <label for="quantidade"  gumga-translate-tag="itempedidoproduto.quantidade"></label>
+        <div ng-class="{'form-group':PedidoForm.quantidade.$pristine,'form-group has-error': PedidoForm.quantidade.$invalid,'form-group has-success': PedidoForm.quantidade.$valid}">
+        <input id="quantidade" gumga-error type="text" name="quantidade" ng-model="entity.quantidade"  class="form-control" />
+        </div>
+        <!--valor class gumga.framework.domain.domains.GumgaMoney-->
+        <label for="valor"  gumga-translate-tag="itempedidoproduto.valor"></label>
+        <div ng-class="{'form-group':PedidoForm.valor.$pristine,'form-group has-error': PedidoForm.valor.$invalid,'form-group has-success': PedidoForm.valor.$valid}">
+        <input id="valor" gumga-error type="text" name="valor"  ng-model="entity.valor.value" class="form-control" ui-money-mask="2"/>
+        </div>
+        <!--entregas interface java.util.List-->
+<div class="full-width-without-padding">        <label for="entregas"  gumga-translate-tag="itempedidoproduto.entregas"></label>
+<gumga-one-to-many
+     children="entity.entregas"
+     template-url="app/modules/itempedidoproduto/views/modalEntrega.html"
+     displayable-property="quando"
+     controller="ModalEntregaController"></gumga-one-to-many>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="ok(entity)" ng-disabled="Modal.$invalid">OK</button>
+    <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+</form>

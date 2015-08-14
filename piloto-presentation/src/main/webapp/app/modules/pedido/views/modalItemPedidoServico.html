@@ -1,0 +1,26 @@
+<form name="Modal">
+<div class="modal-header">
+    <h3 class="modal-title" gumga-translate-tag=" itempedidoservico.title"></h3>
+</div>
+<div class="modal-body" style="overflow: auto">
+        <!--servico class br.com.empresa.piloto.domain.model.Servico-->
+        <div class="full-width-without-padding">
+             <label for="servico"  gumga-translate-tag="itempedidoservico.servico"></label>
+            <gumga-many-to-one             value="entity.servico"
+            search-method="servicoAsyncSearch('nome',param)"
+            field="nome"
+            authorize-add="true"            add-method="servicoAsyncSave(value,'nome')">
+            </gumga-many-to-one>
+        </div>
+        <!--horas class java.lang.Integer-->
+        <label for="horas"  gumga-translate-tag="itempedidoservico.horas"></label>
+        <div ng-class="{'form-group':PedidoForm.horas.$pristine,'form-group has-error': PedidoForm.horas.$invalid,'form-group has-success': PedidoForm.horas.$valid}">
+        <input id="horas" gumga-error type="text" name="horas" ng-model="entity.horas"  class="form-control" />
+        </div>
+</div>
+<div class="clearfix"></div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="ok(entity)" ng-disabled="Modal.$invalid">OK</button>
+    <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+</form>

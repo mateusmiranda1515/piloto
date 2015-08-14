@@ -1,0 +1,52 @@
+<form name="ClienteForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--nome class java.lang.String-->
+        <label for="nome"  gumga-translate-tag="cliente.nome"></label>
+        <div ng-class="{'form-group':ClienteForm.nome.$pristine,'form-group has-error': ClienteForm.nome.$invalid,'form-group has-success': ClienteForm.nome.$valid}">
+        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        </div>
+        <!--email class gumga.framework.domain.domains.GumgaEMail-->
+        <label for="email"  gumga-translate-tag="cliente.email"></label>
+        <div ng-class="{'form-group':ClienteForm.email.$pristine,'form-group has-error': ClienteForm.email.$invalid,'form-group has-success': ClienteForm.email.$valid}">
+        <input id="email" gumga-error type="email" name="email"  ng-model="entity.email.value" class="form-control" />
+        </div>
+        <!--telefone class gumga.framework.domain.domains.GumgaPhoneNumber-->
+        <label for="telefone"  gumga-translate-tag="cliente.telefone"></label>
+        <div ng-class="{'form-group':ClienteForm.telefone.$pristine,'form-group has-error': ClienteForm.telefone.$invalid,'form-group has-success': ClienteForm.telefone.$valid}">
+        <input id="telefone" gumga-error type="text" name="telefone"  ng-model="entity.telefone.value" class="form-control" ui-br-phone-number/>
+        </div>
+        <!--endereco class gumga.framework.domain.domains.GumgaAddress-->
+        <label for="endereco"  gumga-translate-tag="cliente.endereco"></label>
+        <div class="row">
+            <div class="col-md-12">
+                <gumga-address name="endereco" value="entity.endereco"> </gumga-address>
+            </div>
+        </div>
+
+        <!--ativo class gumga.framework.domain.domains.GumgaBoolean-->
+        <label for="ativo"  gumga-translate-tag="cliente.ativo"></label>
+        <div ng-class="{'form-group':ClienteForm.ativo.$pristine,'form-group has-error': ClienteForm.ativo.$invalid,'form-group has-success': ClienteForm.ativo.$valid}">
+        <input style="width:15px" gumga-error type="checkbox"  name="ativo" ng-model="entity.ativo.value" class="form-control" />
+        </div>
+        <!--cnpj class gumga.framework.domain.domains.GumgaCNPJ-->
+        <label for="cnpj"  gumga-translate-tag="cliente.cnpj"></label>
+        <div ng-class="{'form-group':ClienteForm.cnpj.$pristine,'form-group has-error': ClienteForm.cnpj.$invalid,'form-group has-success': ClienteForm.cnpj.$valid}">
+        <input id="cnpj" pattern-alias="00.000.000/0000-00" gumga-error type="text" name="cnpj"  ng-model="entity.cnpj.value" class="form-control" gumga-pattern="(\d{2})\.(\d{3}).(\d{3})/(\d{4})-(\d{2})" placeholder="00.000.000/0000-00" />
+        </div>
+        <!--url class gumga.framework.domain.domains.GumgaURL-->
+        <label for="url"  gumga-translate-tag="cliente.url"></label>
+        <div ng-class="{'form-group':ClienteForm.url.$pristine,'form-group has-error': ClienteForm.url.$invalid,'form-group has-success': ClienteForm.url.$valid}">
+        <input id="url" gumga-error type="url" name="url"  ng-model="entity.url.value" class="form-control" />
+        </div>
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="cliente.list"
+                submit="clienteUpdate(entity)"
+                position="right"
+                valid="ClienteForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

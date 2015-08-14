@@ -1,0 +1,42 @@
+<div class="col-md-12">
+   <h3 style="margin-top: 0" gumga-translate-tag="horariotrabalho.title"></h3>
+    <div class="col-md-5" style="padding-left: 0">
+        <a ui-sref="horariotrabalho.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
+        <button type="button" class="btn btn-danger" ng-click="horariotrabalhoDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
+    </div>
+    <div class="col-md-7" style="padding-right: 0">
+        <gumga-search fields="dia,horarioInicial,horarioFinal,ip4,ip6"
+                       advanced="true"
+                       search-method="horariotrabalhoSearch(field,param)"
+                      advanced-method="horariotrabalhoAdvancedSearch(param)"
+                       translate-entity=" horariotrabalho">
+            <advanced-field name="id" type="number"></advanced-field>
+         <advanced-field name="dia" type="string"></advanced-field>
+         <advanced-field name="horarioInicial" type="string"></advanced-field>
+         <advanced-field name="horarioFinal" type="string"></advanced-field>
+         <advanced-field name="ip4" type="string"></advanced-field>
+         <advanced-field name="ip6" type="string"></advanced-field>
+        </gumga-search>
+    </div>
+        <gumga-table
+            translate-entity="horariotrabalho"
+            name="horariotrabalho"
+            values="HorarioTrabalho.content.data.values"
+            columns="dia,horarioInicial,horarioFinal,ip4,ip6"
+            sort-function="sort(field,way)"
+            >
+            <object-column column="horarioinicial" property="horarioinicial.hour"></object-column>
+            <object-column column="horariofinal" property="horariofinal.hour"></object-column>
+            <buttons-column>
+            <a ui-sref="horariotrabalho.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
+            </buttons-column>
+        </gumga-table>
+
+    <div class="full-width-without-padding">
+        <pagination ng-model="page"
+                    items-per-page="HorarioTrabalho.content.data.pageSize"
+                    total-items="HorarioTrabalho.content.data.count"
+                    ng-change="get()"></pagination>
+    </div>
+
+</div>

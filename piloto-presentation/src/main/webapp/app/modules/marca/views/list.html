@@ -1,0 +1,37 @@
+<div class="col-md-12">
+   <h3 style="margin-top: 0" gumga-translate-tag="marca.title"></h3>
+    <div class="col-md-5" style="padding-left: 0">
+        <a ui-sref="marca.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
+        <button type="button" class="btn btn-danger" ng-click="marcaDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
+    </div>
+    <div class="col-md-7" style="padding-right: 0">
+        <gumga-search fields="nome,location"
+                       advanced="true"
+                       search-method="marcaSearch(field,param)"
+                      advanced-method="marcaAdvancedSearch(param)"
+                       translate-entity=" marca">
+            <advanced-field name="id" type="number"></advanced-field>
+         <advanced-field name="nome" type="string"></advanced-field>
+         <advanced-field name="location" type="string"></advanced-field>
+        </gumga-search>
+    </div>
+        <gumga-table
+            translate-entity="marca"
+            name="marca"
+            values="Marca.content.data.values"
+            columns="nome,location"
+            sort-function="sort(field,way)"
+            >
+            <buttons-column>
+            <a ui-sref="marca.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
+            </buttons-column>
+        </gumga-table>
+
+    <div class="full-width-without-padding">
+        <pagination ng-model="page"
+                    items-per-page="Marca.content.data.pageSize"
+                    total-items="Marca.content.data.count"
+                    ng-change="get()"></pagination>
+    </div>
+
+</div>

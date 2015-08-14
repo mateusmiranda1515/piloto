@@ -1,0 +1,91 @@
+<form name="FuncionarioForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--nome class java.lang.String-->
+        <label for="nome"  gumga-translate-tag="funcionario.nome"></label>
+        <div ng-class="{'form-group':FuncionarioForm.nome.$pristine,'form-group has-error': FuncionarioForm.nome.$invalid,'form-group has-success': FuncionarioForm.nome.$valid}">
+        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        </div>
+        <!--email class gumga.framework.domain.domains.GumgaEMail-->
+        <label for="email"  gumga-translate-tag="funcionario.email"></label>
+        <div ng-class="{'form-group':FuncionarioForm.email.$pristine,'form-group has-error': FuncionarioForm.email.$invalid,'form-group has-success': FuncionarioForm.email.$valid}">
+        <input id="email" gumga-error type="email" name="email"  ng-model="entity.email.value" class="form-control" />
+        </div>
+        <!--telefone class gumga.framework.domain.domains.GumgaPhoneNumber-->
+        <label for="telefone"  gumga-translate-tag="funcionario.telefone"></label>
+        <div ng-class="{'form-group':FuncionarioForm.telefone.$pristine,'form-group has-error': FuncionarioForm.telefone.$invalid,'form-group has-success': FuncionarioForm.telefone.$valid}">
+        <input id="telefone" gumga-error type="text" name="telefone"  ng-model="entity.telefone.value" class="form-control" ui-br-phone-number/>
+        </div>
+        <!--endereco class gumga.framework.domain.domains.GumgaAddress-->
+        <label for="endereco"  gumga-translate-tag="funcionario.endereco"></label>
+        <div class="row">
+            <div class="col-md-12">
+                <gumga-address name="endereco" value="entity.endereco"> </gumga-address>
+            </div>
+        </div>
+
+        <!--ativo class gumga.framework.domain.domains.GumgaBoolean-->
+        <label for="ativo"  gumga-translate-tag="funcionario.ativo"></label>
+        <div ng-class="{'form-group':FuncionarioForm.ativo.$pristine,'form-group has-error': FuncionarioForm.ativo.$invalid,'form-group has-success': FuncionarioForm.ativo.$valid}">
+        <input style="width:15px" gumga-error type="checkbox"  name="ativo" ng-model="entity.ativo.value" class="form-control" />
+        </div>
+        <!--cpf class gumga.framework.domain.domains.GumgaCPF-->
+        <label for="cpf"  gumga-translate-tag="funcionario.cpf"></label>
+        <div ng-class="{'form-group':FuncionarioForm.cpf.$pristine,'form-group has-error': FuncionarioForm.cpf.$invalid,'form-group has-success': FuncionarioForm.cpf.$valid}">
+        <input id="cpf" gumga-error type="text" name="cpf"  ng-model="entity.cpf.value" class="form-control" gumga-pattern="(\d{3})\.(\d{3}).(\d{3})-(\d{2})" placeholder="000.000.000-00" pattern-alias="000.000.000-00"/>
+        </div>
+        <!--dataNascimento class java.util.Date-->
+        <label for="dataNascimento"  gumga-translate-tag="funcionario.dataNascimento"></label>
+        <div ng-class="{'form-group':FuncionarioForm.dataNascimento.$pristine,'form-group has-error': FuncionarioForm.dataNascimento.$invalid,'form-group has-success': FuncionarioForm.dataNascimento.$valid}">
+        <input type="text" name="dataNascimento" class="form-control"  datepicker-popup="fullDate" ng-model="entity.dataNascimento" is-open="opened" ng-click="opened= !opened" close-text="Close" />        </div>
+        <!--capacidades interface java.util.Set-->
+        <div class="col-md-6">
+            <label for="capacidades"  gumga-translate-tag="servico.title"></label>
+        </div>
+        <div class="col-md-6">
+            <label for="funcionario.capacidades" gumga-translate-tag="funcionario.capacidades"></label>
+        </div>
+        <div class="full-width-without-padding">
+            <gumga-many-to-many 
+                left-list="Servico.content.data.values" 
+                right-list="entity.capacidades" 
+                left-search="servicoSearch(param)" 
+                filter-parameters="nome"
+                post-method="servicoSave(value,'nome')"
+                authorize-add="true">
+                    <left-field>{{$value.nome}}</left-field>
+                    <right-field>{{$value.nome}}</right-field>
+            </gumga-many-to-many>
+
+        </div>
+        <!--horarios interface java.util.Set-->
+        <div class="col-md-6">
+            <label for="horarios"  gumga-translate-tag="horariotrabalho.title"></label>
+        </div>
+        <div class="col-md-6">
+            <label for="funcionario.horarios" gumga-translate-tag="funcionario.horarios"></label>
+        </div>
+        <div class="full-width-without-padding">
+            <gumga-many-to-many 
+                left-list="HorarioTrabalho.content.data.values" 
+                right-list="entity.horarios" 
+                left-search="horariotrabalhoSearch(param)" 
+                filter-parameters="dia"
+                post-method="horariotrabalhoSave(value,'dia')"
+                authorize-add="true">
+                    <left-field>{{$value.dia}}</left-field>
+                    <right-field>{{$value.dia}}</right-field>
+            </gumga-many-to-many>
+
+        </div>
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="funcionario.list"
+                submit="funcionarioUpdate(entity)"
+                position="right"
+                valid="FuncionarioForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

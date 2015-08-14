@@ -1,0 +1,33 @@
+<form name="MarcaForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--nome class java.lang.String-->
+        <label for="nome"  gumga-translate-tag="marca.nome"></label>
+        <div ng-class="{'form-group':MarcaForm.nome.$pristine,'form-group has-error': MarcaForm.nome.$invalid,'form-group has-success': MarcaForm.nome.$valid}">
+        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        </div>
+        <!--location class gumga.framework.domain.domains.GumgaGeoLocation-->
+        <label for="location"  gumga-translate-tag="marca.location"></label>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="location.latitude">Latitude</label>
+                <div ng-class="{'form-group':MarcaForm.location.$pristine,'form-group has-error': MarcaForm.location.$invalid,'form-group has-success': MarcaForm.location.$valid}">
+                <input id="location.latitude" gumga-error type="text" name="location.latitude"  ng-model="entity.location.latitude" class="form-control" />
+                </div>                <label for="location.longitude">Longitude</label>
+                <div ng-class="{'form-group':MarcaForm.location.$pristine,'form-group has-error': MarcaForm.location.$invalid,'form-group has-success': MarcaForm.location.$valid}">
+                <input id="location.longitude" gumga-error type="text" name="location.longitude"  ng-model="entity.location.longitude" class="form-control" />
+                </div>                <a class="btn btn-default" ng-href="http://maps.google.com/maps?q={{entity.location.latitude + ',' + entity.location.longitude}}" target="_blank"> <p class="glyphicon glyphicon-globe"></p> GOOGLE MAPS</a>
+            </div>
+        </div>
+
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="marca.list"
+                submit="marcaUpdate(entity)"
+                position="right"
+                valid="MarcaForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

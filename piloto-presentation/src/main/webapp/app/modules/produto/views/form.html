@@ -1,0 +1,38 @@
+<form name="ProdutoForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--nome class java.lang.String-->
+        <label for="nome"  gumga-translate-tag="produto.nome"></label>
+        <div ng-class="{'form-group':ProdutoForm.nome.$pristine,'form-group has-error': ProdutoForm.nome.$invalid,'form-group has-success': ProdutoForm.nome.$valid}">
+        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        </div>
+        <!--valor class gumga.framework.domain.domains.GumgaMoney-->
+        <label for="valor"  gumga-translate-tag="produto.valor"></label>
+        <div ng-class="{'form-group':ProdutoForm.valor.$pristine,'form-group has-error': ProdutoForm.valor.$invalid,'form-group has-success': ProdutoForm.valor.$valid}">
+        <input id="valor" gumga-error type="text" name="valor"  ng-model="entity.valor.value" class="form-control" ui-money-mask="2"/>
+        </div>
+        <!--quantidade class java.lang.Integer-->
+        <label for="quantidade"  gumga-translate-tag="produto.quantidade"></label>
+        <div ng-class="{'form-group':ProdutoForm.quantidade.$pristine,'form-group has-error': ProdutoForm.quantidade.$invalid,'form-group has-success': ProdutoForm.quantidade.$valid}">
+        <input id="quantidade" gumga-error type="text" name="quantidade" ng-model="entity.quantidade"  class="form-control" />
+        </div>
+        <!--marca class br.com.empresa.piloto.domain.model.Marca-->
+        <div class="full-width-without-padding">
+             <label for="marca"  gumga-translate-tag="produto.marca"></label>
+            <gumga-many-to-one             value="entity.marca"
+            search-method="marcaAsyncSearch('nome',param)"
+            field="nome"
+            authorize-add="true"            add-method="marcaAsyncSave(value,'nome')">
+            </gumga-many-to-one>
+        </div>
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="produto.list"
+                submit="produtoUpdate(entity)"
+                position="right"
+                valid="ProdutoForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

@@ -1,0 +1,56 @@
+<form name="PedidoForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--numero class java.lang.String-->
+        <label for="numero"  gumga-translate-tag="pedido.numero"></label>
+        <div ng-class="{'form-group':PedidoForm.numero.$pristine,'form-group has-error': PedidoForm.numero.$invalid,'form-group has-success': PedidoForm.numero.$valid}">
+        <input id="numero" gumga-error type="text" name="numero" ng-model="entity.numero"  class="form-control" />
+        </div>
+        <!--quando class java.util.Date-->
+        <label for="quando"  gumga-translate-tag="pedido.quando"></label>
+        <div ng-class="{'form-group':PedidoForm.quando.$pristine,'form-group has-error': PedidoForm.quando.$invalid,'form-group has-success': PedidoForm.quando.$valid}">
+        <input type="text" name="quando" class="form-control"  datepicker-popup="fullDate" ng-model="entity.quando" is-open="opened" ng-click="opened= !opened" close-text="Close" />        </div>
+        <!--cliente class br.com.empresa.piloto.domain.model.Cliente-->
+        <div class="full-width-without-padding">
+             <label for="cliente"  gumga-translate-tag="pedido.cliente"></label>
+            <gumga-many-to-one             value="entity.cliente"
+            search-method="clienteAsyncSearch('nome',param)"
+            field="nome"
+            authorize-add="true"            add-method="clienteAsyncSave(value,'nome')">
+            </gumga-many-to-one>
+        </div>
+        <!--enderecoDeEntrega class gumga.framework.domain.domains.GumgaAddress-->
+        <label for="enderecoDeEntrega"  gumga-translate-tag="pedido.enderecoDeEntrega"></label>
+        <div class="row">
+            <div class="col-md-12">
+                <gumga-address name="enderecoDeEntrega" value="entity.enderecoDeEntrega"> </gumga-address>
+            </div>
+        </div>
+
+        <!--produtos interface java.util.List-->
+<div class="full-width-without-padding">        <label for="produtos"  gumga-translate-tag="pedido.produtos"></label>
+<gumga-one-to-many
+     children="entity.produtos"
+     template-url="app/modules/pedido/views/modalItemPedidoProduto.html"
+     displayable-property="produto"
+     controller="ModalItemPedidoProdutoController"></gumga-one-to-many>
+</div>
+        <!--servicos interface java.util.List-->
+<div class="full-width-without-padding">        <label for="servicos"  gumga-translate-tag="pedido.servicos"></label>
+<gumga-one-to-many
+     children="entity.servicos"
+     template-url="app/modules/pedido/views/modalItemPedidoServico.html"
+     displayable-property="servico"
+     controller="ModalItemPedidoServicoController"></gumga-one-to-many>
+</div>
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="pedido.list"
+                submit="pedidoUpdate(entity)"
+                position="right"
+                valid="PedidoForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

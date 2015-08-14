@@ -1,0 +1,13 @@
+[
+  "CRUD-BASE"
+,"CRUD-Funcionario"
+,"CRUD-Cliente"
+,"CRUD-HorarioTrabalho"
+,"CRUD-Pedido"
+,"CRUD-ItemPedidoProduto"
+,"CRUD-ItemPedidoServico"
+,"CRUD-Entrega"
+,"CRUD-Produto"
+,"CRUD-Servico"
+,"CRUD-Marca"
+]

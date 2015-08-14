@@ -1,0 +1,49 @@
+<div class="col-md-12">
+   <h3 style="margin-top: 0" gumga-translate-tag="funcionario.title"></h3>
+    <div class="col-md-5" style="padding-left: 0">
+        <a ui-sref="funcionario.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
+        <button type="button" class="btn btn-danger" ng-click="funcionarioDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
+    </div>
+    <div class="col-md-7" style="padding-right: 0">
+        <gumga-search fields="nome,email,telefone,endereco,ativo,cpf,dataNascimento,capacidades,horarios"
+                       advanced="true"
+                       search-method="funcionarioSearch(field,param)"
+                      advanced-method="funcionarioAdvancedSearch(param)"
+                       translate-entity=" funcionario">
+            <advanced-field name="id" type="number"></advanced-field>
+         <advanced-field name="nome" type="string"></advanced-field>
+         <advanced-field name="email" type="string"></advanced-field>
+         <advanced-field name="telefone" type="string"></advanced-field>
+         <advanced-field name="endereco" type="string"></advanced-field>
+         <advanced-field name="ativo" type="boolean"></advanced-field>
+         <advanced-field name="cpf" type="string"></advanced-field>
+         <advanced-field name="dataNascimento" type="date"></advanced-field>
+         <advanced-field name="capacidades" type="string"></advanced-field>
+         <advanced-field name="horarios" type="string"></advanced-field>
+        </gumga-search>
+    </div>
+        <gumga-table
+            translate-entity="funcionario"
+            name="funcionario"
+            values="Funcionario.content.data.values"
+            columns="nome,email,telefone,endereco,ativo,cpf,dataNascimento,capacidades,horarios"
+            sort-function="sort(field,way)"
+            >
+            <object-column column="email" property="email.value"></object-column>
+            <object-column column="telefone" property="telefone.value"></object-column>
+            <object-column column="endereco" property="endereco.localization"></object-column>
+            <object-column column="ativo" property="ativo.value"></object-column>
+            <object-column column="cpf" property="cpf.value"></object-column>
+            <buttons-column>
+            <a ui-sref="funcionario.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
+            </buttons-column>
+        </gumga-table>
+
+    <div class="full-width-without-padding">
+        <pagination ng-model="page"
+                    items-per-page="Funcionario.content.data.pageSize"
+                    total-items="Funcionario.content.data.count"
+                    ng-change="get()"></pagination>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="col-md-12">
+   <h3 style="margin-top: 0" gumga-translate-tag="itempedidoproduto.title"></h3>
+    <div class="col-md-5" style="padding-left: 0">
+        <a ui-sref="itempedidoproduto.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
+        <button type="button" class="btn btn-danger" ng-click="itempedidoprodutoDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
+    </div>
+    <div class="col-md-7" style="padding-right: 0">
+        <gumga-search fields="produto,quantidade,valor,entregas"
+                       advanced="true"
+                       search-method="itempedidoprodutoSearch(field,param)"
+                      advanced-method="itempedidoprodutoAdvancedSearch(param)"
+                       translate-entity=" itempedidoproduto">
+            <advanced-field name="id" type="number"></advanced-field>
+         <advanced-field name="produto" type="string"></advanced-field>
+         <advanced-field name="quantidade" type="number"></advanced-field>
+         <advanced-field name="valor" type="money"></advanced-field>
+         <advanced-field name="entregas" type="string"></advanced-field>
+        </gumga-search>
+    </div>
+        <gumga-table
+            translate-entity="itempedidoproduto"
+            name="itempedidoproduto"
+            values="ItemPedidoProduto.content.data.values"
+            columns="produto,quantidade,valor,entregas"
+            sort-function="sort(field,way)"
+            >
+            <buttons-column>
+            <a ui-sref="itempedidoproduto.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
+            </buttons-column>
+        </gumga-table>
+
+    <div class="full-width-without-padding">
+        <pagination ng-model="page"
+                    items-per-page="ItemPedidoProduto.content.data.pageSize"
+                    total-items="ItemPedidoProduto.content.data.count"
+                    ng-change="get()"></pagination>
+    </div>
+
+</div>

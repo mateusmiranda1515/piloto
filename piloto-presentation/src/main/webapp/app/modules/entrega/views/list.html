@@ -1,0 +1,39 @@
+<div class="col-md-12">
+   <h3 style="margin-top: 0" gumga-translate-tag="entrega.title"></h3>
+    <div class="col-md-5" style="padding-left: 0">
+        <a ui-sref="entrega.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
+        <button type="button" class="btn btn-danger" ng-click="entregaDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
+    </div>
+    <div class="col-md-7" style="padding-right: 0">
+        <gumga-search fields="quando,quantidade,endereco"
+                       advanced="true"
+                       search-method="entregaSearch(field,param)"
+                      advanced-method="entregaAdvancedSearch(param)"
+                       translate-entity=" entrega">
+            <advanced-field name="id" type="number"></advanced-field>
+         <advanced-field name="quando" type="date"></advanced-field>
+         <advanced-field name="quantidade" type="number"></advanced-field>
+         <advanced-field name="endereco" type="string"></advanced-field>
+        </gumga-search>
+    </div>
+        <gumga-table
+            translate-entity="entrega"
+            name="entrega"
+            values="Entrega.content.data.values"
+            columns="quando,quantidade,endereco"
+            sort-function="sort(field,way)"
+            >
+            <object-column column="endereco" property="endereco.localization"></object-column>
+            <buttons-column>
+            <a ui-sref="entrega.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
+            </buttons-column>
+        </gumga-table>
+
+    <div class="full-width-without-padding">
+        <pagination ng-model="page"
+                    items-per-page="Entrega.content.data.pageSize"
+                    total-items="Entrega.content.data.count"
+                    ng-change="get()"></pagination>
+    </div>
+
+</div>

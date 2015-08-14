@@ -1,0 +1,29 @@
+<form name="Modal">
+<div class="modal-header">
+    <h3 class="modal-title" gumga-translate-tag=" entrega.title"></h3>
+</div>
+<div class="modal-body" style="overflow: auto">
+        <!--quando class java.util.Date-->
+        <label for="quando"  gumga-translate-tag="entrega.quando"></label>
+        <div ng-class="{'form-group':ItemPedidoProdutoForm.quando.$pristine,'form-group has-error': ItemPedidoProdutoForm.quando.$invalid,'form-group has-success': ItemPedidoProdutoForm.quando.$valid}">
+        <input type="text" name="quando" class="form-control"  datepicker-popup="fullDate" ng-model="entity.quando" is-open="opened" ng-click="opened= !opened" close-text="Close" />        </div>
+        <!--quantidade class java.lang.Integer-->
+        <label for="quantidade"  gumga-translate-tag="entrega.quantidade"></label>
+        <div ng-class="{'form-group':ItemPedidoProdutoForm.quantidade.$pristine,'form-group has-error': ItemPedidoProdutoForm.quantidade.$invalid,'form-group has-success': ItemPedidoProdutoForm.quantidade.$valid}">
+        <input id="quantidade" gumga-error type="text" name="quantidade" ng-model="entity.quantidade"  class="form-control" />
+        </div>
+        <!--endereco class gumga.framework.domain.domains.GumgaAddress-->
+        <label for="endereco"  gumga-translate-tag="entrega.endereco"></label>
+        <div class="row">
+            <div class="col-md-12">
+                <gumga-address name="endereco" value="entity.endereco"> </gumga-address>
+            </div>
+        </div>
+
+</div>
+<div class="clearfix"></div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="ok(entity)" ng-disabled="Modal.$invalid">OK</button>
+    <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+</form>

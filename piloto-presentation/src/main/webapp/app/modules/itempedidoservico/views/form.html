@@ -1,0 +1,28 @@
+<form name="ItemPedidoServicoForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--servico class br.com.empresa.piloto.domain.model.Servico-->
+        <div class="full-width-without-padding">
+             <label for="servico"  gumga-translate-tag="itempedidoservico.servico"></label>
+            <gumga-many-to-one             value="entity.servico"
+            search-method="servicoAsyncSearch('nome',param)"
+            field="nome"
+            authorize-add="true"            add-method="servicoAsyncSave(value,'nome')">
+            </gumga-many-to-one>
+        </div>
+        <!--horas class java.lang.Integer-->
+        <label for="horas"  gumga-translate-tag="itempedidoservico.horas"></label>
+        <div ng-class="{'form-group':ItemPedidoServicoForm.horas.$pristine,'form-group has-error': ItemPedidoServicoForm.horas.$invalid,'form-group has-success': ItemPedidoServicoForm.horas.$valid}">
+        <input id="horas" gumga-error type="text" name="horas" ng-model="entity.horas"  class="form-control" />
+        </div>
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="itempedidoservico.list"
+                submit="itempedidoservicoUpdate(entity)"
+                position="right"
+                valid="ItemPedidoServicoForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

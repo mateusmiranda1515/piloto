@@ -1,0 +1,31 @@
+<form name="EntregaForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--quando class java.util.Date-->
+        <label for="quando"  gumga-translate-tag="entrega.quando"></label>
+        <div ng-class="{'form-group':EntregaForm.quando.$pristine,'form-group has-error': EntregaForm.quando.$invalid,'form-group has-success': EntregaForm.quando.$valid}">
+        <input type="text" name="quando" class="form-control"  datepicker-popup="fullDate" ng-model="entity.quando" is-open="opened" ng-click="opened= !opened" close-text="Close" />        </div>
+        <!--quantidade class java.lang.Integer-->
+        <label for="quantidade"  gumga-translate-tag="entrega.quantidade"></label>
+        <div ng-class="{'form-group':EntregaForm.quantidade.$pristine,'form-group has-error': EntregaForm.quantidade.$invalid,'form-group has-success': EntregaForm.quantidade.$valid}">
+        <input id="quantidade" gumga-error type="text" name="quantidade" ng-model="entity.quantidade"  class="form-control" />
+        </div>
+        <!--endereco class gumga.framework.domain.domains.GumgaAddress-->
+        <label for="endereco"  gumga-translate-tag="entrega.endereco"></label>
+        <div class="row">
+            <div class="col-md-12">
+                <gumga-address name="endereco" value="entity.endereco"> </gumga-address>
+            </div>
+        </div>
+
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="entrega.list"
+                submit="entregaUpdate(entity)"
+                position="right"
+                valid="EntregaForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>

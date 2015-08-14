@@ -1,0 +1,32 @@
+<form name="HorarioTrabalhoForm" gumga-form novalidate>
+    <div class="full-width-without-padding">
+
+        <!--dia class br.com.empresa.piloto.domain.model.DiaDaSemana-->
+        <label for="dia"  gumga-translate-tag="horariotrabalho.dia"></label>
+        <select class='form-control' gumga-error name="dia" ng-model="entity.dia" >
+            <option  ng-selected="value.value === entity.dia"  value="{{value.value}}" ng-repeat="value in valueDiaDaSemana">{{value.label}}</option>        </select>
+        <!--horarioInicial class gumga.framework.domain.domains.GumgaTime-->
+        <label for="horarioInicial"  gumga-translate-tag="horariotrabalho.horarioInicial"></label>
+         <timepicker ng-model="entity.horarioInicial.value"  show-meridian="false"></timepicker>        <!--horarioFinal class gumga.framework.domain.domains.GumgaTime-->
+        <label for="horarioFinal"  gumga-translate-tag="horariotrabalho.horarioFinal"></label>
+         <timepicker ng-model="entity.horarioFinal.value"  show-meridian="false"></timepicker>        <!--ip4 class gumga.framework.domain.domains.GumgaIP4-->
+        <label for="ip4"  gumga-translate-tag="horariotrabalho.ip4"></label>
+        <div ng-class="{'form-group':HorarioTrabalhoForm.ip4.$pristine,'form-group has-error': HorarioTrabalhoForm.ip4.$invalid,'form-group has-success': HorarioTrabalhoForm.ip4.$valid}">
+        <input id="ip4" gumga-error type="text" name="ip4"  ng-model="entity.ip4.value" class="form-control" gumga-min="12" gumga-max="12"/>
+        </div>
+        <!--ip6 class gumga.framework.domain.domains.GumgaIP6-->
+        <label for="ip6"  gumga-translate-tag="horariotrabalho.ip6"></label>
+        <div ng-class="{'form-group':HorarioTrabalhoForm.ip6.$pristine,'form-group has-error': HorarioTrabalhoForm.ip6.$invalid,'form-group has-success': HorarioTrabalhoForm.ip6.$valid}">
+        <input id="ip6" gumga-error type="text" name="ip6"  ng-model="entity.ip6.value" class="form-control" gumga-min="12" gumga-max="12"/>
+        </div>
+
+        <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
+        <gumga-form-buttons
+                back="horariotrabalho.list"
+                submit="horariotrabalhoUpdate(entity)"
+                position="right"
+                valid="HorarioTrabalhoForm.$valid"
+                continue="continue">
+        </gumga-form-buttons>
+    </div>
+</form>
