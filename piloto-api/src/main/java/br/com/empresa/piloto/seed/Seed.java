@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
 	private AtomicBoolean started = new AtomicBoolean(false);
+        @Autowired
+        private SeedPiloto seedPiloto;
 
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (started.get()) return;
@@ -35,6 +37,7 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 	
 	private List<AppSeed> seeds() {
 		List<AppSeed> list = new LinkedList<>();
+                list.add(seedPiloto);
 		return list;
 	}
 
