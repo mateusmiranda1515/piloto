@@ -39,18 +39,18 @@ public class Application {
 
     @Bean
     public static DataSource dataSource() {
-//        GumgaQueryParserProvider.defaultMap = GumgaQueryParserProvider.getOracleLikeMap();
-        GumgaQueryParserProvider.defaultMap = GumgaQueryParserProvider.getMySqlLikeMap();
+        GumgaQueryParserProvider.defaultMap = GumgaQueryParserProvider.getOracleLikeMap();
+//        GumgaQueryParserProvider.defaultMap = GumgaQueryParserProvider.getMySqlLikeMap();
         HikariConfig config = new HikariConfig();
 
-        config.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
-        config.addDataSourceProperty("url", "jdbc:mysql://localhost:3306/piloto?zeroDateTimeBehavior=convertToNull");
-        config.addDataSourceProperty("user", "root");
-        config.addDataSourceProperty("password", "senha");
-//        config.setDataSourceClassName("org.h2.jdbcx.JdbcDataSource");
-//        config.addDataSourceProperty("url", "jdbc:h2:mem:test;MVCC=true");
-//        config.addDataSourceProperty("user", "sa");
-//        config.addDataSourceProperty("password", "sa");
+//        config.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
+//        config.addDataSourceProperty("url", "jdbc:mysql://localhost:3306/piloto?zeroDateTimeBehavior=convertToNull");
+//        config.addDataSourceProperty("user", "root");
+//        config.addDataSourceProperty("password", "senha");
+        config.setDataSourceClassName("org.h2.jdbcx.JdbcDataSource");
+        config.addDataSourceProperty("url", "jdbc:h2:mem:test;MVCC=true");
+        config.addDataSourceProperty("user", "sa");
+        config.addDataSourceProperty("password", "sa");
         config.setMaximumPoolSize(20);
 
         config.setIdleTimeout(30000L);
@@ -66,11 +66,11 @@ public class Application {
 
         Properties properties = new Properties();
         properties.put("eclipselink.weaving", "false");
-//        properties.put("hibernate.hbm2ddl.auto", "create-drop");
-//        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
-        properties.put("hibernate.hbm2ddl.auto", "update");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        //properties.put("hibernate.hbm2ddl.auto", "update");
+//        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
         //properties.put("hibernate.show_sql", "true");
         //properties.put("hibernate.format_sql", "true");
