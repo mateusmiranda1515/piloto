@@ -1,42 +1,32 @@
 <div class="col-md-12">
-   <h3 style="margin-top: 0" gumga-translate-tag="pedido.title"></h3>
+    <h3 style="margin-top: 0" gumga-translate-tag="pedido.title"></h3>
     <div class="col-md-5" style="padding-left: 0">
         <a ui-sref="pedido.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
         <button type="button" class="btn btn-danger" ng-click="pedidoDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
     </div>
     <div class="col-md-7" style="padding-right: 0">
         <gumga-search fields="numero,quando,cliente,enderecoDeEntrega,produtos,servicos"
-                       advanced="true"
-                       search-method="pedidoSearch(field,param)"
+                      advanced="true"
+                      search-method="pedidoSearch(field,param)"
                       advanced-method="pedidoAdvancedSearch(param)"
-                       translate-entity=" pedido">
+                      translate-entity=" pedido">
             <advanced-field name="id" type="number"></advanced-field>
-         <advanced-field name="numero" type="string"></advanced-field>
-         <advanced-field name="quando" type="date"></advanced-field>
-         <advanced-field name="cliente" type="string"></advanced-field>
-         <advanced-field name="enderecoDeEntrega" type="string"></advanced-field>
-         <advanced-field name="produtos" type="string"></advanced-field>
-         <advanced-field name="servicos" type="string"></advanced-field>
+            <advanced-field name="numero" type="string"></advanced-field>
+            <advanced-field name="quando" type="date"></advanced-field>
+            <advanced-field name="cliente" type="string"></advanced-field>
+            <advanced-field name="enderecoDeEntrega" type="string"></advanced-field>
+            <advanced-field name="produtos" type="string"></advanced-field>
+            <advanced-field name="servicos" type="string"></advanced-field>
         </gumga-search>
     </div>
-        <gumga-table
-            translate-entity="pedido"
-            name="pedido"
-            values="Pedido.content.data.values"
-            columns="numero,quando,cliente,enderecoDeEntrega,produtos,servicos"
-            sort-function="sort(field,way)"
-            >
-            <object-column column="enderecodeentrega" property="enderecodeentrega.localization"></object-column>
-            <buttons-column>
-            <a ui-sref="pedido.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-            </buttons-column>
-        </gumga-table>
-
+    <br/><br/><br/><br/>
+    <gumga-list data="Pedido.content.data.values"  sort="pedidoSort(field,dir)" configuration="conf"></gumga-list>
+    
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="Pedido.content.data.pageSize"
                     total-items="Pedido.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="pedidoGet()"></pagination>
     </div>
 
 </div>

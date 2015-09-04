@@ -4,7 +4,7 @@
         <!--numero class java.lang.String-->
         <label for="numero"  gumga-translate-tag="pedido.numero"></label>
         <div ng-class="{'form-group':PedidoForm.numero.$pristine,'form-group has-error': PedidoForm.numero.$invalid,'form-group has-success': PedidoForm.numero.$valid}">
-        <input id="numero" gumga-error type="text" name="numero" ng-model="entity.numero"  class="form-control" />
+        <input id="numero" gumga-error gumga-required type="text" name="numero" ng-model="entity.numero"  class="form-control" />
         </div>
         <!--quando class java.util.Date-->
         <label for="quando"  gumga-translate-tag="pedido.quando"></label>

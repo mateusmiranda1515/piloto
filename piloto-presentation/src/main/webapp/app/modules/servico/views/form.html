@@ -4,7 +4,7 @@
         <!--nome class java.lang.String-->
         <label for="nome"  gumga-translate-tag="servico.nome"></label>
         <div ng-class="{'form-group':ServicoForm.nome.$pristine,'form-group has-error': ServicoForm.nome.$invalid,'form-group has-success': ServicoForm.nome.$valid}">
-        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        <input id="nome" gumga-error gumga-required type="text" name="nome" ng-model="entity.nome"  class="form-control" />
         </div>
         <!--codigoUniversal class java.lang.String-->
         <label for="codigoUniversal"  gumga-translate-tag="servico.codigoUniversal"></label>

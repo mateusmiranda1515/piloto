@@ -4,7 +4,7 @@
         <!--nome class java.lang.String-->
         <label for="nome"  gumga-translate-tag="funcionario.nome"></label>
         <div ng-class="{'form-group':FuncionarioForm.nome.$pristine,'form-group has-error': FuncionarioForm.nome.$invalid,'form-group has-success': FuncionarioForm.nome.$valid}">
-        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        <input id="nome" gumga-error gumga-required type="text" name="nome" ng-model="entity.nome"  class="form-control" />
         </div>
         <!--email class gumga.framework.domain.domains.GumgaEMail-->
         <label for="email"  gumga-translate-tag="funcionario.email"></label>
@@ -32,7 +32,7 @@
         <!--cpf class gumga.framework.domain.domains.GumgaCPF-->
         <label for="cpf"  gumga-translate-tag="funcionario.cpf"></label>
         <div ng-class="{'form-group':FuncionarioForm.cpf.$pristine,'form-group has-error': FuncionarioForm.cpf.$invalid,'form-group has-success': FuncionarioForm.cpf.$valid}">
-        <input id="cpf" gumga-error type="text" name="cpf"  ng-model="entity.cpf.value" class="form-control" placeholder="000.000.000-00" />
+        <input id="cpf" gumga-error type="text" gumga-mask="999.999.999-99" name="cpf"  ng-model="entity.cpf.value" class="form-control"  />
         </div>
         <!--dataNascimento class java.util.Date-->
         <label for="dataNascimento"  gumga-translate-tag="funcionario.dataNascimento"></label>

@@ -4,7 +4,7 @@
         <!--nome class java.lang.String-->
         <label for="nome"  gumga-translate-tag="marca.nome"></label>
         <div ng-class="{'form-group':MarcaForm.nome.$pristine,'form-group has-error': MarcaForm.nome.$invalid,'form-group has-success': MarcaForm.nome.$valid}">
-        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        <input id="nome" gumga-error gumga-required type="text" name="nome" ng-model="entity.nome"  class="form-control" />
         </div>
         <!--location class gumga.framework.domain.domains.GumgaGeoLocation-->
         <label for="location"  gumga-translate-tag="marca.location"></label>
@@ -19,7 +19,7 @@
                 </div>                <a class="btn btn-default" ng-href="http://maps.google.com/maps?q={{entity.location.latitude + ',' + entity.location.longitude}}" target="_blank"> <p class="glyphicon glyphicon-globe"></p> GOOGLE MAPS</a>
             </div>
         </div>
-
+        <br/>
 
         <gumga-errors placement="right" icon="glyphicon glyphicon-question-sign" label="Lista de erros" title="Lista de erros"></gumga-errors>
         <gumga-form-buttons

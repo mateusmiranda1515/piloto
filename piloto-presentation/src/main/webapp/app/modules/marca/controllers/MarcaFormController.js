@@ -9,6 +9,9 @@ define([], function () {
       $scope.$on('afterUpdate',function(){
              $scope.continue.value ? $scope.entity = angular.copy(entity.data) : $state.go('marca.list');
        })
+       
+      
+       
     }
 
     return MarcaFormController;

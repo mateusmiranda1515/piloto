@@ -1,37 +1,30 @@
 <div class="col-md-12">
-   <h3 style="margin-top: 0" gumga-translate-tag="itempedidoservico.title"></h3>
+    <h3 style="margin-top: 0" gumga-translate-tag="itempedidoservico.title"></h3>
     <div class="col-md-5" style="padding-left: 0">
         <a ui-sref="itempedidoservico.insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New</a>
         <button type="button" class="btn btn-danger" ng-click="itempedidoservicoDelete(selectedEntities)"><i class="glyphicon glyphicon-trash"></i> Delete        </button>
     </div>
     <div class="col-md-7" style="padding-right: 0">
         <gumga-search fields="servico,horas"
-                       advanced="true"
-                       search-method="itempedidoservicoSearch(field,param)"
+                      advanced="true"
+                      search-method="itempedidoservicoSearch(field,param)"
                       advanced-method="itempedidoservicoAdvancedSearch(param)"
-                       translate-entity=" itempedidoservico">
+                      translate-entity=" itempedidoservico">
             <advanced-field name="id" type="number"></advanced-field>
-         <advanced-field name="servico" type="string"></advanced-field>
-         <advanced-field name="horas" type="number"></advanced-field>
+            <advanced-field name="servico" type="string"></advanced-field>
+            <advanced-field name="horas" type="number"></advanced-field>
         </gumga-search>
     </div>
-        <gumga-table
-            translate-entity="itempedidoservico"
-            name="itempedidoservico"
-            values="ItemPedidoServico.content.data.values"
-            columns="servico,horas"
-            sort-function="sort(field,way)"
-            >
-            <buttons-column>
-            <a ui-sref="itempedidoservico.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-            </buttons-column>
-        </gumga-table>
+
+    <br/><br/><br/><br/>
+    <gumga-list data="ItemPedidoServico.content.data.values" configuration="conf"></gumga-list>
+
 
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="ItemPedidoServico.content.data.pageSize"
                     total-items="ItemPedidoServico.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="itempedidoservicoGet()"></pagination>
     </div>
 
 </div>

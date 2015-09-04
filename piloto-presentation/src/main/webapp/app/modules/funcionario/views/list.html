@@ -22,28 +22,14 @@
          <advanced-field name="horarios" type="string"></advanced-field>
         </gumga-search>
     </div>
-        <gumga-table
-            translate-entity="funcionario"
-            name="funcionario"
-            values="Funcionario.content.data.values"
-            columns="nome,email,telefone,endereco,ativo,cpf,dataNascimento,capacidades,horarios"
-            sort-function="sort(field,way)"
-            >
-            <object-column column="email" property="email.value"></object-column>
-            <object-column column="telefone" property="telefone.value"></object-column>
-            <object-column column="endereco" property="endereco.localization"></object-column>
-            <object-column column="ativo" property="ativo.value"></object-column>
-            <object-column column="cpf" property="cpf.value"></object-column>
-            <buttons-column>
-            <a ui-sref="funcionario.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-            </buttons-column>
-        </gumga-table>
+         <br/><br/><br/><br/>
+        <gumga-list data="Funcionario.content.data.values" configuration="conf"></gumga-list>
 
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="Funcionario.content.data.pageSize"
                     total-items="Funcionario.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="funcionarioGet()"></pagination>
     </div>
 
 </div>

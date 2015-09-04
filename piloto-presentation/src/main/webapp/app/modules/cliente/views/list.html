@@ -24,29 +24,14 @@
         <gumga-queries save-query="clienteSaveQuery(query,name)"></gumga-queries>
 
     </div>
-    <gumga-table
-        translate-entity="cliente"
-        name="cliente"
-        values="Cliente.content.data.values"
-        columns="nome,email,telefone,endereco,ativo,cnpj,url"
-        sort-function="sort(field,way)"
-        >
-        <object-column column="email" property="email.value"></object-column>
-        <object-column column="telefone" property="telefone.value"></object-column>
-        <object-column column="endereco" property="endereco.localization"></object-column>
-        <object-column column="ativo" property="ativo.value"></object-column>
-        <object-column column="cnpj" property="cnpj.value"></object-column>
-        <object-column column="url" property="url.value"></object-column>
-        <buttons-column>
-            <a ui-sref="cliente.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-        </buttons-column>
-    </gumga-table>
-
+     <br/><br/><br/><br/>
+        <gumga-list data="Cliente.content.data.values" configuration="conf"></gumga-list>
+        
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="Cliente.content.data.pageSize"
                     total-items="Cliente.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="clienteGet()"></pagination>
     </div>
 
 </div>

@@ -4,7 +4,7 @@
         <!--nome class java.lang.String-->
         <label for="nome"  gumga-translate-tag="cliente.nome"></label>
         <div ng-class="{'form-group':ClienteForm.nome.$pristine,'form-group has-error': ClienteForm.nome.$invalid,'form-group has-success': ClienteForm.nome.$valid}">
-        <input id="nome" gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
+        <input id="nome" gumga-required gumga-error type="text" name="nome" ng-model="entity.nome"  class="form-control" />
         </div>
         <!--email class gumga.framework.domain.domains.GumgaEMail-->
         <label for="email"  gumga-translate-tag="cliente.email"></label>
@@ -32,7 +32,7 @@
         <!--cnpj class gumga.framework.domain.domains.GumgaCNPJ-->
         <label for="cnpj"  gumga-translate-tag="cliente.cnpj"></label>
         <div ng-class="{'form-group':ClienteForm.cnpj.$pristine,'form-group has-error': ClienteForm.cnpj.$invalid,'form-group has-success': ClienteForm.cnpj.$valid}">
-        <input id="cnpj"  gumga-error type="text" name="cnpj"  ng-model="entity.cnpj.value" class="form-control" placeholder="00.000.000/0000-00" />
+        <input id="cnpj" gumga-mask="99.999.999/9999-99" gumga-error type="text" name="cnpj"  ng-model="entity.cnpj.value" class="form-control"  />
         </div>
         <!--url class gumga.framework.domain.domains.GumgaURL-->
         <label for="url"  gumga-translate-tag="cliente.url"></label>

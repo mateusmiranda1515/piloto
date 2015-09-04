@@ -17,23 +17,15 @@
          <advanced-field name="marca" type="string"></advanced-field>
         </gumga-search>
     </div>
-        <gumga-table
-            translate-entity="produto"
-            name="produto"
-            values="Produto.content.data.values"
-            columns="nome,valor,quantidade,marca"
-            sort-function="sort(field,way)"
-            >
-            <buttons-column>
-            <a ui-sref="produto.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-            </buttons-column>
-        </gumga-table>
+   
+   <br/><br/><br/><br/>
+        <gumga-list data="Produto.content.data.values" sort="produtoSort(field,dir)" configuration="conf"></gumga-list>
 
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="Produto.content.data.pageSize"
                     total-items="Produto.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="produtoGet()"></pagination>
     </div>
 
 </div>

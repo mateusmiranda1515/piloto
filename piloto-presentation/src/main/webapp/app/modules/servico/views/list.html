@@ -14,24 +14,16 @@
          <advanced-field name="nome" type="string"></advanced-field>
          <advanced-field name="codigoUniversal" type="string"></advanced-field>
         </gumga-search>
-    </div>
-        <gumga-table
-            translate-entity="servico"
-            name="servico"
-            values="Servico.content.data.values"
-            columns="nome,codigoUniversal"
-            sort-function="sort(field,way)"
-            >
-            <buttons-column>
-            <a ui-sref="servico.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-            </buttons-column>
-        </gumga-table>
+    </div><br/><br/><br/><br/>
+   
+   <gumga-list data="Servico.content.data.values" configuration="conf"></gumga-list>
+
 
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="Servico.content.data.pageSize"
                     total-items="Servico.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="servicoGet()"></pagination>
     </div>
 
 </div>

@@ -16,24 +16,14 @@
          <advanced-field name="endereco" type="string"></advanced-field>
         </gumga-search>
     </div>
-        <gumga-table
-            translate-entity="entrega"
-            name="entrega"
-            values="Entrega.content.data.values"
-            columns="quando,quantidade,endereco"
-            sort-function="sort(field,way)"
-            >
-            <object-column column="endereco" property="endereco.localization"></object-column>
-            <buttons-column>
-            <a ui-sref="entrega.edit({id: entity.id})" class="btn btn-link pull-right">Edit</a>
-            </buttons-column>
-        </gumga-table>
+        <br/><br/><br/><br/>
+        <gumga-list data="Entrega.content.data.values" configuration="conf"></gumga-list>
 
     <div class="full-width-without-padding">
         <pagination ng-model="page"
                     items-per-page="Entrega.content.data.pageSize"
                     total-items="Entrega.content.data.count"
-                    ng-change="get()"></pagination>
+                    ng-change="entregaGet()"></pagination>
     </div>
 
 </div>

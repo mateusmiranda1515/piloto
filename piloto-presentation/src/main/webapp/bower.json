@@ -10,7 +10,7 @@
     "tests"
   ],
   "dependencies": {
-    "gumga-components": "1.1.0",
+    "gumga-components": "latest",
     "requirejs": "~2.1.16",
     "animate.css": "~3.2.6",
     "bootstrap-stylus": "~4.0.4"
